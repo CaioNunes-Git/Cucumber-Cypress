@@ -22,6 +22,11 @@ module.exports = (on, config) => {
 }
 
 const cucumber = require('cypress-cucumber-preprocessor').default
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
+
 module.exports = (on, config) => {
-  on('file:preprocessor', cucumber())
+  on('file:preprocessor', cucumber());
+  //Do allure ↓
+  allureWriter(on, config);
+  return config;
 }

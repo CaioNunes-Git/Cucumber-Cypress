@@ -7,12 +7,27 @@
     "cypress": "^8.7.0",
     "cypress-cucumber-preprocessor": "^4.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.0.0",
+    "@shelex/cypress-allure-plugin": "^2.19.5"
+  },
   "scripts": {
-    "test:chrome": "cypress run --browser chrome --no-exit"
+    "cy:run": "cypress run --env allure=true",
+    "allure:generate": "allure generate allure-results",
+    "allure:open": "allure open allure-report",
+    "allure:clear": "rm -r allure-results/ allure-report || true",
+    "test": "npx npm-run-all allure:clear cy:run allure:generate"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/support/steps"
+  },
+  "cypressHelper.cucumberTagsAutocomplete": {
+    "enable": true,
+    "allurePlugin": true,
+    "tags": [
+      "focus",
+      "someOtherTag"
+    ]
   },
   "keywords": [],
   "author": "",

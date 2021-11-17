@@ -4,8 +4,8 @@ Feature: TodoList
 
 Scenario: Adicionar nova tarefa
     Given que eu acesso o TodoApp
-    When digitar a tarefa 
-    And confirmar
+    When inserir a tarefa 
+    # And confirmar, Essa parte fica subentendida
     Then a nova tarefa será adicionada
 
 Scenario: Não adicionar nova tarefa
@@ -36,3 +36,10 @@ Scenario: Completar tarefas
     Given que eu acesso o TodoApp
     When eu assiná-lo a tarefa como completa
     Then ao lado da tarefa consta como verificado
+
+Scenario: Mover tarefas
+    Given que eu acesso o TodoApp
+    When eu arrasto a primeira tarefa
+    And a coloco no lugar na segunda
+    Then ela muda de lugar
+
